@@ -1,10 +1,13 @@
 class Solution:
-    def targetIndices(self, nums, target):
-        lt_count = eq_count = 0
-        for n in nums:
-            if n < target:
-                lt_count += 1
-            elif n == target:
-                eq_count += 1
+    def targetIndices(self, nums: List[int], target: int) -> List[int]:
+        less_than_target = 0
+        for i in nums:
+            if i < target:
+                less_than_target += 1
+
+        repeated = nums.count(target)
+        result = []
+        for i in range(less_than_target,less_than_target + repeated):
+            result.append(i)
             
-        return list(range(lt_count, lt_count+eq_count))
+        return result
